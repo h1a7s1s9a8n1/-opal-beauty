@@ -1,89 +1,427 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>صالون ليلك | الباقات</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <span class="logo">✦</span>
-      <div>
-        <div class="brand-name">صالون ليلك</div>
-        <div class="brand-sub">الباقات</div>
-      </div>
-    </div>
+:root{
+  --bg:#0b0b12;
+  --panel:#121225;
+  --panel2:#151531;
+  --text:#eaeaf2;
+  --muted:#b9b9cf;
+  --pink:#ff4fd8;
+  --pink2:#ff7ae7;
+  --gold:#f7c66b;
+  --line: rgba(255,255,255,.10);
+  --shadow: 0 18px 60px rgba(0,0,0,.45);
+  --radius:18px;
+  --radius2:26px;
+}
 
-    <nav class="nav">
-      <a href="index.html">الرئيسية</a>
-      <a href="services.html">الخدمات</a>
-      <a href="packages.html" class="active">الباقات</a>
-      <a href="booking.html">الحجز</a>
-    </nav>
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", sans-serif;
+  background:
+    radial-gradient(1200px 600px at 10% 0%, rgba(255,79,216,.18), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(247,198,107,.14), transparent 55%),
+    linear-gradient(180deg, #07070e, var(--bg));
+  color: var(--text);
+}
 
-    <button class="menu-btn" aria-label="فتح القائمة">☰</button>
-  </header>
+a{ color: inherit; text-decoration:none; }
+main{ padding: 18px; }
 
-  <main class="page">
-    <section class="section">
-      <div class="section-head">
-        <h2>باقات مختارة بعناية</h2>
-        <p>اختر باقة تناسب وقتك وذوقك.</p>
-      </div>
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  background: rgba(10,10,20,.68);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+}
 
-      <div class="grid grid-3">
-        <article class="card featured">
-          <div class="badge">الأكثر طلبًا</div>
-          <div class="card-icon">✨</div>
-          <h3>باقة اللمعة</h3>
-          <p>عناية شعر + ماسك ترطيب + ستايل بسيط.</p>
-          <ul class="checklist compact">
-            <li>استشارة</li>
-            <li>منتجات فاخرة</li>
-            <li>لمعة تدوم</li>
-          </ul>
-          <div class="price-row">
-            <div class="price">بدءًا من 199</div>
-            <a href="booking.html" class="btn primary">احجز</a>
-          </div>
-        </article>
+.brand{ display:flex; align-items:center; gap: 12px; }
+.logo{
+  width:44px; height:44px;
+  display:grid; place-items:center;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,79,216,.22), rgba(247,198,107,.10));
+  color: var(--gold);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.brand-name{ font-weight: 900; letter-spacing:.2px; }
+.brand-sub{ font-size: 13px; color: var(--muted); margin-top:2px; }
 
-        <article class="card">
-          <div class="card-icon">🌸</div>
-          <h3>باقة النضارة</h3>
-          <p>تنظيف بشرة + تقشير لطيف + ترطيب عميق.</p>
-          <ul class="checklist compact">
-            <li>تفتيح تدريجي</li>
-            <li>تهدئة</li>
-            <li>Glow طبيعي</li>
-          </ul>
-          <div class="price-row">
-            <div class="price">بدءًا من 179</div>
-            <a href="booking.html" class="btn primary">احجز</a>
-          </div>
-        </article>
+.nav{ display:flex; gap: 14px; }
+.nav a{
+  padding: 10px 12px;
+  border-radius: 999px;
+  border:1px solid transparent;
+  color: var(--muted);
+  transition: .2s ease;
+}
+.nav a:hover{ color: var(--text); border-color: var(--line); background: rgba(255,255,255,.04); }
+.nav a.active{
+  color: var(--text);
+  border-color: rgba(255,79,216,.35);
+  background: rgba(255,79,216,.12);
+}
 
-        <article class="card">
-          <div class="card-icon">💎</div>
-          <h3>باقة الفخامة</h3>
-          <p>مانيكير + باديكير + جل بألوان فاخرة.</p>
-          <ul class="checklist compact">
-            <li>ثبات قوي</li>
-            <li>لمسة ناعمة</li>
-            <li>شكل مرتب</li>
-          </ul>
-          <div class="price-row">
-            <div class="price">بدءًا من 149</div>
-            <a href="booking.html" class="btn primary">احجز</a>
+.menu-btn{
+  display:none;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor:pointer;
+}
+
+.hero{
+  max-width: 1100px;
+  margin: 20px auto 0;
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+  align-items: stretch;
+}
+.hero-content{
+  padding: 26px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+}
+.hero-content h1{
+  margin: 0 0 10px;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.2;
+}
+.hero-content p{
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 62ch;
+}
+.hero-cta{ display:flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  cursor:pointer;
+  transition: .2s ease;
+  font-weight: 800;
+}
+.btn.primary{
+  border-color: rgba(255,79,216,.45);
+  background: linear-gradient(180deg, rgba(255,79,216,.25), rgba(255,79,216,.10));
+}
+.btn.primary:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,79,216,.75);
+}
+.btn.ghost{
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+}
+.btn.ghost:hover{ background: rgba(255,255,255,.06); transform: translateY(-1px); }
+.btn.full{ width:100%; }
+
+.hero-stats{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.stat{
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  min-width: 140px;
+}
+.stat-num{ font-weight: 1000; color: var(--gold); font-size: 18px; }
+.stat-label{ color: var(--muted); font-size: 13px; margin-top:4px; }
+
+.hero-card{
+  border-radius: var(--radius2);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(247,198,107,.16), rgba(255,79,216,.08));
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.hero-card-inner{
+  padding: 22px;
+  height: 100%;
+}
+.chip{
+  display:inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(247,198,107,.35);
+  background: rgba(247,198,107,.12);
+  color: var(--gold);
+  font-weight: 900;
+  font-size: 13px;
+}
+.hero-card h2{ margin: 12px 0 8px; }
+.hero-card p{ color: var(--muted); margin: 0 0 14px; font-size: 14px; line-height: 1.6; }
+
+.checklist{
+  margin: 0 0 16px;
+  padding: 0;
+  list-style:none;
+}
+.checklist li{
+  margin: 10px 0;
+  color: var(--muted);
+  padding-right: 18px;
+  position: relative;
+}
+.checklist li::after{
+  content:"✓";
+  position:absolute;
+  right:0;
+  top:0;
+  color: var(--pink2);
+  font-weight: 1000;
+}
+
+.section{
+  max-width: 1100px;
+  margin: 22px auto 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.02);
+  border-radius: var(--radius2);
+  box-shadow: 0 10px 40px rgba(0,0,0,.25);
+}
+.section-head h2{ margin: 0 0 8px; font-size: 26px; }
+.section-head p{ margin: 0; color: var(--muted); }
+
+.grid{
+  display:grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+.grid-2{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.card{
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+  padding: 16px;
+  min-height: 190px;
+}
+.card.featured{
+  border-color: rgba(255,79,216,.35);
+  background: linear-gradient(180deg, rgba(255,79,216,.14), rgba(255,255,255,.02));
+}
+.card-icon{
+  width: 44px; height: 44px;
+  display:grid; place-items:center;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  margin-bottom: 10px;
+}
+.card h3{ margin: 0 0 8px; }
+.card p{ margin: 0 0 12px; color: var(--muted); line-height: 1.65; }
+.meta-row{ display:flex; gap: 8px; flex-wrap: wrap; }
+
+.pill{
+  padding: 7px 10px;
+  border-radius: 999px;
+  border:1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}
+.pill.gold{
+  border-color: rgba(247,198,107,.35);
+  color: var(--gold);
+  background: rgba(247,198,107,.10);
+}
+
+.badge{
+  display:inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,79,216,.14);
+  border:1px solid rgba(255,79,216,.35);
+  color: var(--pink2);
+  font-weight: 1000;
+  font-size: 13px;
+}
+
+.checklist.compact li::after{ color: var(--gold); }
+.checklist.compact li{ margin: 8px 0; font-size: 14px; }
+
+.price-row{
+  margin-top: 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.price{
+  font-weight: 1000;
+  color: var(--gold);
+}
+
+.center{ display:flex; justify-content:center; margin-top: 16px; }
+
+.note{
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.02);
+}
+.note-title{ font-weight: 1000; color: var(--pink2); margin-bottom: 6px; }
+.note p{ margin: 0; color: var(--muted); line-height: 1.7; }
+
+.cta-band{
+  margin: 18px auto 0;
+  max-width: 1100px;
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255,79,216,.28);
+  background: linear-gradient(90deg, rgba(255,79,216,.10), rgba(247,198,107,.10));
+  padding: 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 14px;
+}
+.cta-band-text h3{ margin:0 0 6px; }
+.cta-band-text p{ margin:0; color: var(--muted); }
+
+.page{ padding-bottom: 20px; }
+
+.form{
+  margin-top: 10px;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.field{
+  display:flex;
+  flex-direction:column;
+  gap: 8px;
+}
+.field span{
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 13px;
+}
+.field input, .field select, .field textarea{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--line);
+  color: var(--text);
+  outline: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  border-color: rgba(255,79,216,.55);
+  box-shadow: 0 0 0 4px rgba(255,79,216,.12);
+}
+.field textarea{ resize: vertical; min-height: 92px; }
+
+.form-actions{
+  margin-top: 14px;
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.alert{
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(247,198,107,.35);
+  background: rgba(247,198,107,.10);
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.contact-band{
+  margin-top: 16px;
+  display:flex;
+  justify-content:space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.02);
+}
+.muted{ color: var(--muted); }
+.muted.small{ font-size: 13px; }
+.contact-items{ display:flex; flex-direction:column; gap: 8px; margin-top: 8px; }
+.qr-box{
+  width: 120px; height: 120px;
+  border-radius: 18px;
+  border: 1px dashed rgba(255,255,255,.22);
+  display:grid; place-items:center;
+  color: var(--muted);
+  background: rgba(255,255,255,.02);
+}
+.qr{ display:flex; flex-direction:column; align-items:center; }
+
+.footer{
+  padding: 18px;
+  border-top: 1px solid var(--line);
+  background: rgba(0,0,0,.10);
+}
+.footer-inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.footer-title{ font-weight: 1000; margin-bottom: 6px; }
+.footer-sub{ color: var(--muted); }
+.footer-links{ display:flex; gap: 14px; flex-wrap: wrap; }
+.footer-links a{
+  color: var(--muted);
+  border: 1px solid transparent;
+  padding: 8px 10px;
+  border-radius: 12px;
+}
+.footer-links a:hover{
+  color: var(--text);
+  border-color: var(--line);
+  background: rgba(255,255,255,.03);
+}
+ <div class="meta-row">
+            <span class="pill">يستمر 30-45 دقيقة</span>
+            <span class="pill gold">راحة تامة</span>
           </div>
         </article>
       </div>
 
       <div class="note">
-        <div class="note-title">مهم</div>
-        <p>الأرقام للتجربة فقط — بدّلها بأسعارك الحقيقية بسهولة داخل الكود.</p>
+        <div class="note-title">ملاحظة</div>
+        <p>الأسعار تختلف حسب طول/حالة الشعر ونوع الخدمة. احجز وسنؤكد لك التفاصيل مباشرة.</p>
+      </div>
+
+      <div class="center">
+        <a href="booking.html" class="btn primary">احجز الخدمة</a>
       </div>
     </section>
   </main>
@@ -92,11 +430,11 @@
     <div class="footer-inner">
       <div>
         <div class="footer-title">صالون ليلك ✦</div>
-        <div class="footer-sub">باقات تليق فيك.</div>
+        <div class="footer-sub">خرافة على طريقة ليلك.</div>
       </div>
       <div class="footer-links">
         <a href="index.html">الرئيسية</a>
-        <a href="services.html">الخدمات</a>
+        <a href="packages.html">الباقات</a>
         <a href="booking.html">الحجز</a>
       </div>
     </div>
