@@ -6,11 +6,11 @@
     <title>L'Élégance | صالون وسبا التجميل الفاخر</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Amiri & Playfair Display -->
+    <!-- خطوط جوجل -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -19,14 +19,13 @@
                 extend: {
                     colors: {
                         gold: {
-                            100: '#FDFBF7',
-                            300: '#E6CA9E',
-                            500: '#C5A059',
-                            600: '#B08B44',
-                            700: '#8C6D31'
-                        },
-                        luxuryDark: '#121212',
-                        luxuryCard: '#1C1A17'
+                            100: '#FFFDF5',
+                            200: '#F5E6BE',
+                            300: '#E7C887',
+                            400: '#D5A750',
+                            500: '#BF8A2A',
+                            600: '#946618'
+                        }
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'Amiri', 'serif'],
@@ -38,55 +37,102 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        .gold-gradient {
-            background: linear-gradient(135deg, #D4AF37 0%, #EDC967 50%, #B8860B 100%);
+        
+        /* تدرجات ألوان النص الذهبي */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF1C5 0%, #E2BA62 50%, #B8860B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* كرت زجاجي فخم */
+        .glass-card {
+            background: rgba(26, 20, 18, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(226, 186, 98, 0.22);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(226, 186, 98, 0.55);
+            box-shadow: 0 10px 35px rgba(213, 167, 80, 0.15);
+        }
+
+        /* تأثير التوهج الخلفي */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.35;
+        }
+
+        /* كانفاس الخيوط الذهبية */
+        #goldCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
     </style>
 </head>
-<body class="bg-[#0D0D0D] text-[#E0E0E0] font-sans antialiased selection:bg-gold-500 selection:text-black">
+<body class="bg-[#110D0E] text-[#F3EDE2] font-sans antialiased selection:bg-gold-400 selection:text-black min-h-screen relative overflow-x-hidden">
+
+    <!-- طبقة الكانفاس التفاعلية للخيوط والجزيئات الذهبية -->
+    <canvas id="goldCanvas"></canvas>
+
+    <!-- إضاءات وألوان خلفية حية ناعمة -->
+    <div class="ambient-glow w-[550px] h-[550px] bg-[#9e6e2e] top-[-10%] right-[-10%] animate-pulse" style="animation-duration: 8s;"></div>
+    <div class="ambient-glow w-[450px] h-[450px] bg-[#531a31] top-[40%] left-[-10%]"></div>
+    <div class="ambient-glow w-[500px] h-[500px] bg-[#8a5d21] bottom-[-10%] right-[10%]"></div>
 
     <!-- شريط التنقل (Navbar) -->
-    <header class="fixed w-full top-0 z-50 bg-[#0D0D0D]/90 backdrop-blur-md border-b border-gold-500/20">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="text-2xl md:text-3xl font-serif tracking-wider gold-gradient font-bold">
+    <header class="fixed w-full top-0 z-50 bg-[#140F10]/75 backdrop-blur-md border-b border-gold-400/20">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-20">
+            <a href="#" class="text-2xl md:text-3xl font-serif tracking-widest gold-gradient-text font-bold">
                 L'ÉLÉGANCE
             </a>
             
-            <nav class="hidden md:flex items-center space-x-8 space-x-reverse text-sm font-medium">
-                <a href="#services" class="hover:text-gold-300 transition duration-300">خدماتنا</a>
-                <a href="#gallery" class="hover:text-gold-300 transition duration-300">معرض الأعمال</a>
-                <a href="#booking" class="hover:text-gold-300 transition duration-300">حجز موعد</a>
-                <a href="#contact" class="hover:text-gold-300 transition duration-300">تواصل معنا</a>
+            <nav class="hidden md:flex items-center space-x-8 space-x-reverse text-sm font-medium tracking-wide">
+                <a href="#services" class="hover:text-gold-300 transition">خدماتنا الملكية</a>
+                <a href="#gallery" class="hover:text-gold-300 transition">المعرض</a>
+                <a href="#booking" class="hover:text-gold-300 transition">حجز الموعد</a>
+                <a href="#contact" class="hover:text-gold-300 transition">تواصل معنا</a>
             </nav>
 
-            <a href="#booking" class="hidden sm:inline-block px-6 py-2.5 rounded-full border border-gold-500 text-gold-300 hover:bg-gold-500 hover:text-black transition duration-300 text-sm tracking-wide">
-                احجزي الآن
+            <a href="#booking" class="px-6 py-2.5 rounded-full border border-gold-400/70 text-gold-200 hover:bg-gold-400 hover:text-black transition duration-300 text-sm font-medium shadow-[0_0_15px_rgba(213,167,80,0.2)]">
+                احجزي جلستك
             </a>
         </div>
     </header>
 
-    <!-- الواجهة الرئيسية (Hero Section) -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80" alt="Luxury Salon" class="w-full h-full object-cover opacity-25 filter brightness-50">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-[#0D0D0D]"></div>
-        </div>
-
-        <div class="relative z-10 max-w-4xl mx-auto text-center">
-            <p class="text-gold-300 text-sm md:text-base tracking-[0.3em] uppercase mb-4 font-semibold">عالم الرفاهية والجمال</p>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-tight mb-6">
-                تألقي بجمال استثنائي يليق بأنوثتك
+    <!-- واجهة الهيرو (Hero Section) -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 px-6 z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-400/30 bg-gold-500/10 mb-6">
+                <i class="fa-solid fa-crown text-gold-300 text-xs"></i>
+                <span class="text-gold-200 text-xs tracking-widest uppercase font-semibold">الملاذ الأفخم للعناية والجمال</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.25] mb-6">
+                سحر الجمال الملكي<br>
+                <span class="gold-gradient-text">بلمسات تدلل أنوثتك</span>
             </h1>
-            <p class="text-gray-400 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-                نقدم لكِ تجربة استرخاء فاخرة بأيدي نخبة من خبيرات التجميل العالميات وبأحدث التقنيات وأجود المنتجات.
+            
+            <p class="text-gray-300 text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+                استمتعي بجلسات عناية حصرية ومترفة تجمع بين سحر الإتقان وأرقى مستحضرات الجمال العالمية في أجواء هادئة تأسر حواسك.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#booking" class="px-8 py-3.5 bg-gradient-to-r from-gold-600 to-gold-500 text-black font-semibold rounded-full shadow-lg shadow-gold-500/20 hover:brightness-110 transition duration-300">
-                    حجز جلسة خاصة
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#booking" class="w-full sm:w-auto px-9 py-4 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-300 text-black font-bold rounded-full shadow-[0_4px_25px_rgba(213,167,80,0.35)] hover:brightness-110 transition duration-300">
+                    احجزي موعدكِ الآن
                 </a>
-                <a href="#services" class="px-8 py-3.5 rounded-full border border-gray-700 hover:border-gold-500 text-white transition duration-300">
+                <a href="#services" class="w-full sm:w-auto px-9 py-4 rounded-full border border-gold-400/30 hover:border-gold-300 text-gold-200 glass-card transition duration-300 font-medium">
                     استكشاف الخدمات
                 </a>
             </div>
@@ -94,78 +140,75 @@
     </section>
 
     <!-- قسم الخدمات (Services) -->
-    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+    <section id="services" class="py-28 px-6 max-w-7xl mx-auto relative z-10">
         <div class="text-center mb-16">
-            <span class="text-gold-500 text-sm font-semibold tracking-widest uppercase">خدماتنا الحصرية</span>
-            <h2 class="text-3xl md:text-5xl font-serif text-white mt-2">عناية مصممة خصيصاً لأجلك</h2>
-            <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-4"></div>
+            <span class="text-gold-300 text-xs font-bold tracking-[0.3em] uppercase">باقات حصرية</span>
+            <h2 class="text-3xl md:text-5xl font-serif text-white mt-2">خدمات مصممة لإبهارك</h2>
+            <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- بطاقة خدمة 1 -->
-            <div class="bg-luxuryCard p-8 rounded-2xl border border-white/5 hover:border-gold-500/40 transition duration-500 group">
-                <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-300 text-2xl mb-6 group-hover:scale-110 transition duration-300">
+            <div class="glass-card p-8 rounded-3xl transition duration-500 group relative">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-400/20 to-transparent border border-gold-400/30 flex items-center justify-center text-gold-300 text-2xl mb-6 group-hover:scale-110 transition duration-300">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">تصفيف وعلاج الشعر الملكي</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-4">جلسات ترميم وترطيب عميق بأجود المكونات الطبيعية، مع قصات وتسريحات على يد أمهر المصممين.</p>
-                <span class="text-gold-300 font-serif text-sm">تبدأ من 250 ر.س</span>
+                <h3 class="text-2xl font-serif font-bold text-white mb-3">تصفيف وعلاج الشعر</h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6">بروتوكولات علاجية عميقة بالذهب والكافيار لإعادة إحياء وتألق خصلات شعرك مع أحدث قصات الموسم.</p>
+                <span class="text-gold-300 font-serif font-semibold text-sm tracking-wider">تبدأ من 250 ر.س</span>
             </div>
 
-            <!-- بطاقة خدمة 2 -->
-            <div class="bg-luxuryCard p-8 rounded-2xl border border-white/5 hover:border-gold-500/40 transition duration-500 group">
-                <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-300 text-2xl mb-6 group-hover:scale-110 transition duration-300">
+            <div class="glass-card p-8 rounded-3xl transition duration-500 group relative">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-400/20 to-transparent border border-gold-400/30 flex items-center justify-center text-gold-300 text-2xl mb-6 group-hover:scale-110 transition duration-300">
                     <i class="fa-solid fa-spa"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">سبا وعناية متقدمة بالبشرة</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-4">برامج تنظيف وتجديد البشرة بتقنيات الهايدرافيشل والماسكات الذهبية لإشراقة ونضارة لا مثيل لها.</p>
-                <span class="text-gold-300 font-serif text-sm">تبدأ من 400 ر.س</span>
+                <h3 class="text-2xl font-serif font-bold text-white mb-3">سبا وتجديد البشرة</h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6">تنظيف وتقشير هيدروجيني متقدم مع أقنعة الذهب الخالص لترطيب عميق ونضارة براقة وفورية.</p>
+                <span class="text-gold-300 font-serif font-semibold text-sm tracking-wider">تبدأ من 400 ر.س</span>
             </div>
 
-            <!-- بطاقة خدمة 3 -->
-            <div class="bg-luxuryCard p-8 rounded-2xl border border-white/5 hover:border-gold-500/40 transition duration-500 group">
-                <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-300 text-2xl mb-6 group-hover:scale-110 transition duration-300">
+            <div class="glass-card p-8 rounded-3xl transition duration-500 group relative">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-400/20 to-transparent border border-gold-400/30 flex items-center justify-center text-gold-300 text-2xl mb-6 group-hover:scale-110 transition duration-300">
                     <i class="fa-solid fa-gem"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">مكياج المناسبات والعرائس</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-4">إطلالات راقية وفاخرة تتناغم مع ملامحك بدقة لتبدين كالأميرات في أروع مناسباتك وليلة عمرك.</p>
-                <span class="text-gold-300 font-serif text-sm">تبدأ من 600 ر.س</span>
+                <h3 class="text-2xl font-serif font-bold text-white mb-3">مكياج ليلة العمر</h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6">لمسات ساحرة للعرائس والمناسبات الكبرى بأيدي أمهر الخبيرات لإطلالة تدوم وتخطف الأنظار.</p>
+                <span class="text-gold-300 font-serif font-semibold text-sm tracking-wider">تبدأ من 600 ر.س</span>
             </div>
         </div>
     </section>
 
-    <!-- قسم معرض الصور (Gallery) -->
-    <section id="gallery" class="py-24 bg-luxuryDark px-6">
+    <!-- قسم المعرض (Gallery) -->
+    <section id="gallery" class="py-24 px-6 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <span class="text-gold-500 text-sm font-semibold tracking-widest uppercase">لمساتنا الفنية</span>
-                <h2 class="text-3xl md:text-5xl font-serif text-white mt-2">معرض الإبداع والتألق</h2>
-                <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-4"></div>
+                <span class="text-gold-300 text-xs font-bold tracking-[0.3em] uppercase">الإبداع والجمال</span>
+                <h2 class="text-3xl md:text-5xl font-serif text-white mt-2">معرض إطلالاتنا الراقية</h2>
+                <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4"></div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="overflow-hidden rounded-xl h-80 group relative">
-                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Work 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
-                        <span class="text-white font-medium">مكياج سهرة مخملي</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="overflow-hidden rounded-2xl h-80 relative group glass-card p-1">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Work 1" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6 rounded-xl">
+                        <span class="text-gold-200 font-medium">مكياج سهرة مخملي</span>
                     </div>
                 </div>
-                <div class="overflow-hidden rounded-xl h-80 group relative">
-                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="Work 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
-                        <span class="text-white font-medium">تسريحات شعر عصرية</span>
+                <div class="overflow-hidden rounded-2xl h-80 relative group glass-card p-1">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="Work 2" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6 rounded-xl">
+                        <span class="text-gold-200 font-medium">تسريحات كلاسيكية وعصرية</span>
                     </div>
                 </div>
-                <div class="overflow-hidden rounded-xl h-80 group relative">
-                    <img src="https://images.unsplash.com/photo-1519014816548-bf785179c24b?auto=format&fit=crop&w=600&q=80" alt="Work 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
-                        <span class="text-white font-medium">مانيكير وباديكير فاخر</span>
+                <div class="overflow-hidden rounded-2xl h-80 relative group glass-card p-1">
+                    <img src="https://images.unsplash.com/photo-1519014816548-bf785179c24b?auto=format&fit=crop&w=600&q=80" alt="Work 3" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6 rounded-xl">
+                        <span class="text-gold-200 font-medium">مانيكير وباديكير ملكي</span>
                     </div>
                 </div>
-                <div class="overflow-hidden rounded-xl h-80 group relative">
-                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Work 4" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
-                        <span class="text-white font-medium">عناية ونضارة البشرة</span>
+                <div class="overflow-hidden rounded-2xl h-80 relative group glass-card p-1">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Work 4" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6 rounded-xl">
+                        <span class="text-gold-200 font-medium">عناية مكثفة بالبشرة</span>
                     </div>
                 </div>
             </div>
@@ -173,69 +216,152 @@
     </section>
 
     <!-- قسم الحجز (Booking Section) -->
-    <section id="booking" class="py-24 px-6 max-w-4xl mx-auto">
-        <div class="bg-luxuryCard p-8 md:p-12 rounded-3xl border border-gold-500/30 shadow-2xl relative overflow-hidden">
+    <section id="booking" class="py-24 px-6 max-w-4xl mx-auto relative z-10">
+        <div class="glass-card p-8 md:p-14 rounded-3xl relative overflow-hidden">
             <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-serif text-white">احجزي جلستك الخاصة</h2>
-                <p class="text-gray-400 text-sm mt-2">اختاري الموعد والخدمة المناسبة لكِ وسيقوم فريقنا بتأكيد الحجز فوراً</p>
+                <span class="text-gold-300 text-xs font-bold tracking-[0.3em] uppercase">خدمة كبار الشخصيات</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-white mt-1">تأكيد حجز جلستك</h2>
+                <p class="text-gray-300 text-sm mt-2">اختاري وقتك وخدمتك وسنهتم بكافة التفاصيل لتستمتعي بالراحة التامة</p>
             </div>
 
-            <form id="bookingForm" onsubmit="event.preventDefault(); alert('تم استلام طلبك بنجاح! سنتواصل معكِ لتأكيد الموعد.');" class="space-y-6">
+            <form onsubmit="event.preventDefault(); alert('تم استلام حجزك الفاخر بنجاح! سيتم التواصل معكِ هاتفياً لتأكيد كافة التفاصيل.');" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-sm text-gray-300 mb-2">الاسم الكامل</label>
-                        <input type="text" required placeholder="سارة أحمد" class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition">
+                        <label class="block text-sm text-gold-200 mb-2">الاسم الكريم</label>
+                        <input type="text" required placeholder="سارة أحمد" class="w-full bg-[#1e1719]/80 border border-gold-400/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-gold-300 transition">
                     </div>
                     <div>
-                        <label class="block text-sm text-gray-300 mb-2">رقم الجوال</label>
-                        <input type="tel" required placeholder="+966 50 000 0000" class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition">
+                        <label class="block text-sm text-gold-200 mb-2">رقم الجوال</label>
+                        <input type="tel" required placeholder="+966 50 000 0000" class="w-full bg-[#1e1719]/80 border border-gold-400/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-gold-300 transition">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-sm text-gray-300 mb-2">الخدمة المطلوبة</label>
-                        <select class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition">
-                            <option>تصفيف وعلاج الشعر</option>
-                            <option>جلسة عناية بالبشرة والسبا</option>
-                            <option>مكياج مناسبات أو عرائس</option>
-                            <option>باقة العناية المتكاملة</option>
+                        <label class="block text-sm text-gold-200 mb-2">الخدمة المطلوبة</label>
+                        <select class="w-full bg-[#1e1719]/80 border border-gold-400/30 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-gold-300 transition">
+                            <option>جلسة تصفيف وعلاج الشعر</option>
+                            <option>سبا ونضارة البشرة بالذهب</option>
+                            <option>مكياج احترافي ومناسبات</option>
+                            <option>باقة العروس الملكية الشاملة</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm text-gray-300 mb-2">تاريخ الموعد</label>
-                        <input type="date" required class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition">
+                        <label class="block text-sm text-gold-200 mb-2">تاريخ الجلسة</label>
+                        <input type="date" required class="w-full bg-[#1e1719]/80 border border-gold-400/30 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-gold-300 transition">
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-sm text-gray-300 mb-2">ملاحظات أو طلبات خاصة (اختياري)</label>
-                    <textarea rows="3" placeholder="حددي اسم الخبيرة المفضلة أو أي تفاصيل إضافية..." class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition"></textarea>
-                </div>
-
-                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-600 to-gold-500 text-black font-bold tracking-wide hover:brightness-110 transition duration-300">
-                    تأكيد طلب الحجز
+                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-500 via-gold-400 to-gold-300 text-black font-bold tracking-wider hover:brightness-110 shadow-[0_5px_25px_rgba(213,167,80,0.3)] transition duration-300">
+                    تأكيد طلب الموعد
                 </button>
             </form>
         </div>
     </section>
 
-    <!-- تذييل الصفحة (Footer) -->
-    <footer id="contact" class="border-t border-white/10 bg-[#0A0A0A] py-12 px-6">
+    <!-- الفوتر (Footer) -->
+    <footer id="contact" class="border-t border-gold-400/20 bg-[#0E0A0B] py-12 px-6 relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-right">
-                <span class="text-2xl font-serif gold-gradient font-bold">L'ÉLÉGANCE</span>
-                <p class="text-xs text-gray-500 mt-2">جميع الحقوق محفوظة © 2026 لصالون L'Élégance التجميلي.</p>
+                <span class="text-2xl font-serif gold-gradient-text font-bold">L'ÉLÉGANCE</span>
+                <p class="text-xs text-gray-400 mt-1">جميع الحقوق محفوظة © 2026 لصالون L'Élégance التجميلي.</p>
             </div>
             
-            <div class="flex space-x-6 space-x-reverse text-gray-400 text-lg">
-                <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-snapchat"></i></a>
-                <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-tiktok"></i></a>
+            <div class="flex space-x-6 space-x-reverse text-gold-300 text-xl">
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-snapchat"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
     </footer>
 
+    <!-- سكريبت تحريك الخيوط والجزيئات الذهبية التفاعلية -->
+    <script>
+        const canvas = document.getElementById('goldCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initParticles();
+        });
+
+        const particles = [];
+        const particleCount = 65; // عدد الجزيئات والخيوط
+        const maxDistance = 140; // مسافة الربط بين الخيوط
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.7;
+                this.vy = (Math.random() - 0.5) * 0.7;
+                this.radius = Math.random() * 2 + 1;
+                this.alpha = Math.random() * 0.5 + 0.3;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(226, 186, 98, ${this.alpha})`;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = '#d5a750';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles.length = 0;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // رسم وتوصيل الخيوط الذهبية
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDistance) {
+                        const alpha = (1 - dist / maxDistance) * 0.28;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(226, 186, 98, ${alpha})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // تحديث ورسم النقاط الذهبية
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        initParticles();
+        animate();
+    </script>
 </body>
 </html>
