@@ -1,446 +1,241 @@
-:root{
-  --bg:#0b0b12;
-  --panel:#121225;
-  --panel2:#151531;
-  --text:#eaeaf2;
-  --muted:#b9b9cf;
-  --pink:#ff4fd8;
-  --pink2:#ff7ae7;
-  --gold:#f7c66b;
-  --line: rgba(255,255,255,.10);
-  --shadow: 0 18px 60px rgba(0,0,0,.45);
-  --radius:18px;
-  --radius2:26px;
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Élégance | صالون وسبا التجميل الفاخر</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Amiri & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FDFBF7',
+                            300: '#E6CA9E',
+                            500: '#C5A059',
+                            600: '#B08B44',
+                            700: '#8C6D31'
+                        },
+                        luxuryDark: '#121212',
+                        luxuryCard: '#1C1A17'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Amiri', 'serif'],
+                        sans: ['Tajawal', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #EDC967 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-[#0D0D0D] text-[#E0E0E0] font-sans antialiased selection:bg-gold-500 selection:text-black">
 
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", sans-serif;
-  background:
-    radial-gradient(1200px 600px at 10% 0%, rgba(255,79,216,.18), transparent 60%),
-    radial-gradient(900px 500px at 90% 10%, rgba(247,198,107,.14), transparent 55%),
-    linear-gradient(180deg, #07070e, var(--bg));
-  color: var(--text);
-}
+    <!-- شريط التنقل (Navbar) -->
+    <header class="fixed w-full top-0 z-50 bg-[#0D0D0D]/90 backdrop-blur-md border-b border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-2xl md:text-3xl font-serif tracking-wider gold-gradient font-bold">
+                L'ÉLÉGANCE
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 space-x-reverse text-sm font-medium">
+                <a href="#services" class="hover:text-gold-300 transition duration-300">خدماتنا</a>
+                <a href="#gallery" class="hover:text-gold-300 transition duration-300">معرض الأعمال</a>
+                <a href="#booking" class="hover:text-gold-300 transition duration-300">حجز موعد</a>
+                <a href="#contact" class="hover:text-gold-300 transition duration-300">تواصل معنا</a>
+            </nav>
 
-a{ color: inherit; text-decoration:none; }
-main{ padding: 18px; }
+            <a href="#booking" class="hidden sm:inline-block px-6 py-2.5 rounded-full border border-gold-500 text-gold-300 hover:bg-gold-500 hover:text-black transition duration-300 text-sm tracking-wide">
+                احجزي الآن
+            </a>
+        </div>
+    </header>
 
-.topbar{
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  backdrop-filter: blur(10px);
-  background: rgba(10,10,20,.68);
-  border-bottom: 1px solid var(--line);
-  padding: 14px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 14px;
-}
+    <!-- الواجهة الرئيسية (Hero Section) -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80" alt="Luxury Salon" class="w-full h-full object-cover opacity-25 filter brightness-50">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-[#0D0D0D]"></div>
+        </div>
 
-.brand{ display:flex; align-items:center; gap: 12px; }
-.logo{
-  width:44px; height:44px;
-  display:grid; place-items:center;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(255,79,216,.22), rgba(247,198,107,.10));
-  color: var(--gold);
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-.brand-name{ font-weight: 900; letter-spacing:.2px; }
-.brand-sub{ font-size: 13px; color: var(--muted); margin-top:2px; }
-
-.nav{ display:flex; gap: 14px; }
-.nav a{
-  padding: 10px 12px;
-  border-radius: 999px;
-  border:1px solid transparent;
-  color: var(--muted);
-  transition: .2s ease;
-}
-.nav a:hover{ color: var(--text); border-color: var(--line); background: rgba(255,255,255,.04); }
-.nav a.active{
-  color: var(--text);
-  border-color: rgba(255,79,216,.35);
-  background: rgba(255,79,216,.12);
-}
-
-.menu-btn{
-  display:none;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  color: var(--text);
-  border-radius: 12px;
-  padding: 10px 12px;
-  cursor:pointer;
-}
-
-.hero{
-  max-width: 1100px;
-  margin: 20px auto 0;
-  display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 18px;
-  align-items: stretch;
-}
-.hero-content{
-  padding: 26px;
-  border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-  border-radius: var(--radius2);
-  box-shadow: var(--shadow);
-}
-.hero-content h1{
-  margin: 0 0 10px;
-  font-size: clamp(28px, 3.2vw, 44px);
-  line-height: 1.2;
-}
-.hero-content p{
-  margin: 0 0 16px;
-  color: var(--muted);
-  font-size: 15px;
-  max-width: 62ch;
-}
-.hero-cta{ display:flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap: 10px;
-  padding: 11px 16px;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  cursor:pointer;
-  transition: .2s ease;
-  font-weight: 800;
-}
-.btn.primary{
-  border-color: rgba(255,79,216,.45);
-  background: linear-gradient(180deg, rgba(255,79,216,.25), rgba(255,79,216,.10));
-}
-.btn.primary:hover{
-  transform: translateY(-1px);
-  border-color: rgba(255,79,216,.75);
-}
-.btn.ghost{
-  background: rgba(255,255,255,.03);
-  color: var(--text);
-}
-.btn.ghost:hover{ background: rgba(255,255,255,.06); transform: translateY(-1px); }
-.btn.full{ width:100%; }
-
-.hero-stats{
-  display:flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 14px;
-}
-.stat{
-  padding: 12px 14px;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  min-width: 140px;
-}
-.stat-num{ font-weight: 1000; color: var(--gold); font-size: 18px; }
-.stat-label{ color: var(--muted); font-size: 13px; margin-top:4px; }
-
-.hero-card{
-  border-radius: var(--radius2);
-  border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(247,198,107,.16), rgba(255,79,216,.08));
-  box-shadow: var(--shadow);
-  overflow:hidden;
-}
-.hero-card-inner{
-  padding: 22px;
-  height: 100%;
-}
-.chip{
-  display:inline-block;
-  padding: 7px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(247,198,107,.35);
-  background: rgba(247,198,107,.12);
-  color: var(--gold);
-  font-weight: 900;
-  font-size: 13px;
-}
-.hero-card h2{ margin: 12px 0 8px; }
-.hero-card p{ color: var(--muted); margin: 0 0 14px; font-size: 14px; line-height: 1.6; }
-
-.checklist{
-  margin: 0 0 16px;
-  padding: 0;
-  list-style:none;
-}
-.checklist li{
-  margin: 10px 0;
-  color: var(--muted);
-  padding-right: 18px;
-  position: relative;
-}
-.checklist li::after{
-  content:"✓";
-  position:absolute;
-  right:0;
-  top:0;
-  color: var(--pink2);
-  font-weight: 1000;
-}
-
-.section{
-  max-width: 1100px;
-  margin: 22px auto 0;
-  padding: 22px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.02);
-  border-radius: var(--radius2);
-  box-shadow: 0 10px 40px rgba(0,0,0,.25);
-}
-.section-head h2{ margin: 0 0 8px; font-size: 26px; }
-.section-head p{ margin: 0; color: var(--muted); }
-
-.grid{
-  display:grid;
-  gap: 14px;
-  margin-top: 16px;
-}
-.grid-2{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-.card{
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
-  padding: 16px;
-  min-height: 190px;
-}
-.card.featured{
-  border-color: rgba(255,79,216,.35);
-  background: linear-gradient(180deg, rgba(255,79,216,.14), rgba(255,255,255,.02));
-}
-.card-icon{
-  width: 44px; height: 44px;
-  display:grid; place-items:center;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  margin-bottom: 10px;
-}
-.card h3{ margin: 0 0 8px; }
-.card p{ margin: 0 0 12px; color: var(--muted); line-height: 1.65; }
-.meta-row{ display:flex; gap: 8px; flex-wrap: wrap; }
-
-.pill{
-  padding: 7px 10px;
-  border-radius: 999px;
-  border:1px solid var(--line);
-  color: var(--muted);
-  font-size: 13px;
-}
-.pill.gold{
-  border-color: rgba(247,198,107,.35);
-  color: var(--gold);
-  background: rgba(247,198,107,.10);
-}
-
-.badge{
-  display:inline-block;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: rgba(255,79,216,.14);
-  border:1px solid rgba(255,79,216,.35);
-  color: var(--pink2);
-  font-weight: 1000;
-  font-size: 13px;
-}
-
-.checklist.compact li::after{ color: var(--gold); }
-.checklist.compact li{ margin: 8px 0; font-size: 14px; }
-
-.price-row{
-  margin-top: 12px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.price{
-  font-weight: 1000;
-  color: var(--gold);
-}
-
-.center{ display:flex; justify-content:center; margin-top: 16px; }
-
-.note{
-  margin-top: 16px;
-  padding: 14px;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.02);
-}
-.note-title{ font-weight: 1000; color: var(--pink2); margin-bottom: 6px; }
-.note p{ margin: 0; color: var(--muted); line-height: 1.7; }
-
-.cta-band{
-  margin: 18px auto 0;
-  max-width: 1100px;
-  border-radius: var(--radius2);
-  border: 1px solid rgba(255,79,216,.28);
-  background: linear-gradient(90deg, rgba(255,79,216,.10), rgba(247,198,107,.10));
-  padding: 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap: 14px;
-}
-.cta-band-text h3{ margin:0 0 6px; }
-.cta-band-text p{ margin:0; color: var(--muted); }
-
-.page{ padding-bottom: 20px; }
-
-.form{
-  margin-top: 10px;
-}
-.form-grid{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-.field{
-  display:flex;
-  flex-direction:column;
-  gap: 8px;
-}
-.field span{
-  color: var(--muted);
-  font-weight: 900;
-  font-size: 13px;
-}
-.field input, .field select, .field textarea{
-  width:100%;
-  padding: 12px 12px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid var(--line);
-  color: var(--text);
-  outline: none;
-}
-.field input:focus, .field select:focus, .field textarea:focus{
-  border-color: rgba(255,79,216,.55);
-  box-shadow: 0 0 0 4px rgba(255,79,216,.12);
-}
-.field textarea{ resize: vertical; min-height: 92px; }
-
-.form-actions{
-  margin-top: 14px;
-  display:flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.alert{
-  margin-top: 14px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(247,198,107,.35);
-  background: rgba(247,198,107,.10);
-  color: var(--gold);
-  font-weight: 900;
-}
-
-.contact-band{
-  margin-top: 16px;
-  display:flex;
-  justify-content:space-between;
-  gap: 14px;
-  flex-wrap: wrap;
-  padding: 14px;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.02);
-}
-.muted{ color: var(--muted); }
-.muted.small{ font-size: 13px; }
-.contact-items{ display:flex; flex-direction:column; gap: 8px; margin-top: 8px; }
-.qr-box{
-  width: 120px; height: 120px;
-  border-radius: 18px;
-  border: 1px dashed rgba(255,255,255,.22);
-  display:grid; place-items:center;
-  color: var(--muted);
-  background: rgba(255,255,255,.02);
-}
-.qr{ display:flex; flex-direction:column; align-items:center; }
-
-.footer{
-  padding: 18px;
-  border-top: 1px solid var(--line);
-  background: rgba(0,0,0,.10);
-}
-.footer-inner{
-  max-width: 1100px;
-  margin: 0 auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.footer-title{ font-weight: 1000; margin-bottom: 6px; }
-.footer-sub{ color: var(--muted); }
-.footer-links{ display:flex; gap: 14px; flex-wrap: wrap; }
-.footer-links a{
-  color: var(--muted);
-  border: 1px solid transparent;
-  padding: 8px 10px;
-  border-radius: 12px;
-}
-.footer-links a:hover{
-  color: var(--text);
-  border-color: var(--line);
-  background: rgba(255,255,255,.03);
-}
- <div class="meta-row">
-            <span class="pill">يستمر 30-45 دقيقة</span>
-            <span class="pill gold">راحة تامة</span>
-          </div>
-        </article>
-      </div>
-
-      <div class="note">
-        <div class="note-title">ملاحظة</div>
-        <p>الأسعار تختلف حسب طول/حالة الشعر ونوع الخدمة. احجز وسنؤكد لك التفاصيل مباشرة.</p>
-      </div>
-
-      <div class="center">
-        <a href="booking.html" class="btn primary">احجز الخدمة</a>
-      </div>
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <p class="text-gold-300 text-sm md:text-base tracking-[0.3em] uppercase mb-4 font-semibold">عالم الرفاهية والجمال</p>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-tight mb-6">
+                تألقي بجمال استثنائي يليق بأنوثتك
+            </h1>
+            <p class="text-gray-400 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+                نقدم لكِ تجربة استرخاء فاخرة بأيدي نخبة من خبيرات التجميل العالميات وبأحدث التقنيات وأجود المنتجات.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#booking" class="px-8 py-3.5 bg-gradient-to-r from-gold-600 to-gold-500 text-black font-semibold rounded-full shadow-lg shadow-gold-500/20 hover:brightness-110 transition duration-300">
+                    حجز جلسة خاصة
+                </a>
+                <a href="#services" class="px-8 py-3.5 rounded-full border border-gray-700 hover:border-gold-500 text-white transition duration-300">
+                    استكشاف الخدمات
+                </a>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-title">صالون ليلك ✦</div>
-        <div class="footer-sub">خرافة على طريقة ليلك.</div>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">الرئيسية</a>
-        <a href="packages.html">الباقات</a>
-        <a href="booking.html">الحجز</a>
-      </div>
-    </div>
-    <div class="footer-copy">© <span id="year"></span> — Beauty Salon. كل الحقوق محفوظة.</div>
-  </footer>
+    <!-- قسم الخدمات (Services) -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-gold-500 text-sm font-semibold tracking-widest uppercase">خدماتنا الحصرية</span>
+            <h2 class="text-3xl md:text-5xl font-serif text-white mt-2">عناية مصممة خصيصاً لأجلك</h2>
+            <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-4"></div>
+        </div>
 
-  <script src="app.js"></script>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- بطاقة خدمة 1 -->
+            <div class="bg-luxuryCard p-8 rounded-2xl border border-white/5 hover:border-gold-500/40 transition duration-500 group">
+                <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-300 text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">تصفيف وعلاج الشعر الملكي</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">جلسات ترميم وترطيب عميق بأجود المكونات الطبيعية، مع قصات وتسريحات على يد أمهر المصممين.</p>
+                <span class="text-gold-300 font-serif text-sm">تبدأ من 250 ر.س</span>
+            </div>
+
+            <!-- بطاقة خدمة 2 -->
+            <div class="bg-luxuryCard p-8 rounded-2xl border border-white/5 hover:border-gold-500/40 transition duration-500 group">
+                <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-300 text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-spa"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">سبا وعناية متقدمة بالبشرة</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">برامج تنظيف وتجديد البشرة بتقنيات الهايدرافيشل والماسكات الذهبية لإشراقة ونضارة لا مثيل لها.</p>
+                <span class="text-gold-300 font-serif text-sm">تبدأ من 400 ر.س</span>
+            </div>
+
+            <!-- بطاقة خدمة 3 -->
+            <div class="bg-luxuryCard p-8 rounded-2xl border border-white/5 hover:border-gold-500/40 transition duration-500 group">
+                <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-300 text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">مكياج المناسبات والعرائس</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">إطلالات راقية وفاخرة تتناغم مع ملامحك بدقة لتبدين كالأميرات في أروع مناسباتك وليلة عمرك.</p>
+                <span class="text-gold-300 font-serif text-sm">تبدأ من 600 ر.س</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم معرض الصور (Gallery) -->
+    <section id="gallery" class="py-24 bg-luxuryDark px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-gold-500 text-sm font-semibold tracking-widest uppercase">لمساتنا الفنية</span>
+                <h2 class="text-3xl md:text-5xl font-serif text-white mt-2">معرض الإبداع والتألق</h2>
+                <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="overflow-hidden rounded-xl h-80 group relative">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Work 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-white font-medium">مكياج سهرة مخملي</span>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl h-80 group relative">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="Work 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-white font-medium">تسريحات شعر عصرية</span>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl h-80 group relative">
+                    <img src="https://images.unsplash.com/photo-1519014816548-bf785179c24b?auto=format&fit=crop&w=600&q=80" alt="Work 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-white font-medium">مانيكير وباديكير فاخر</span>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl h-80 group relative">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Work 4" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-white font-medium">عناية ونضارة البشرة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الحجز (Booking Section) -->
+    <section id="booking" class="py-24 px-6 max-w-4xl mx-auto">
+        <div class="bg-luxuryCard p-8 md:p-12 rounded-3xl border border-gold-500/30 shadow-2xl relative overflow-hidden">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-serif text-white">احجزي جلستك الخاصة</h2>
+                <p class="text-gray-400 text-sm mt-2">اختاري الموعد والخدمة المناسبة لكِ وسيقوم فريقنا بتأكيد الحجز فوراً</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="event.preventDefault(); alert('تم استلام طلبك بنجاح! سنتواصل معكِ لتأكيد الموعد.');" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-2">الاسم الكامل</label>
+                        <input type="text" required placeholder="سارة أحمد" class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-2">رقم الجوال</label>
+                        <input type="tel" required placeholder="+966 50 000 0000" class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-2">الخدمة المطلوبة</label>
+                        <select class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition">
+                            <option>تصفيف وعلاج الشعر</option>
+                            <option>جلسة عناية بالبشرة والسبا</option>
+                            <option>مكياج مناسبات أو عرائس</option>
+                            <option>باقة العناية المتكاملة</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-2">تاريخ الموعد</label>
+                        <input type="date" required class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-gray-300 mb-2">ملاحظات أو طلبات خاصة (اختياري)</label>
+                    <textarea rows="3" placeholder="حددي اسم الخبيرة المفضلة أو أي تفاصيل إضافية..." class="w-full bg-[#121212] border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-600 to-gold-500 text-black font-bold tracking-wide hover:brightness-110 transition duration-300">
+                    تأكيد طلب الحجز
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة (Footer) -->
+    <footer id="contact" class="border-t border-white/10 bg-[#0A0A0A] py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-right">
+                <span class="text-2xl font-serif gold-gradient font-bold">L'ÉLÉGANCE</span>
+                <p class="text-xs text-gray-500 mt-2">جميع الحقوق محفوظة © 2026 لصالون L'Élégance التجميلي.</p>
+            </div>
+            
+            <div class="flex space-x-6 space-x-reverse text-gray-400 text-lg">
+                <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-snapchat"></i></a>
+                <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
