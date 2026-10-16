@@ -3,26 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Opal Beauty Salon</title>
+<title>OPAL Beauty Salon - صالون أوبال الأشرفية</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif}
-body{background:#FFF7F8;color:#4A2C2A}
-nav{background:#fff;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+body{background:#FFFBFB;color:#3A2A28}
+nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);padding:14px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #F5D6DB}
 .logo{font-weight:900;font-size:24px;color:#8B6A3A}
-.btn-wa{background:#8B6A3A;color:#fff;padding:12px 26px;border-radius:30px;text-decoration:none;font-weight:700;display:inline-block}
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
-.hero-img{background:url('https://images.unsplash.com/photo-1560869713-7d0a29430803?w=800') center/cover;min-height:300px}
-.hero-text{background:linear-gradient(135deg,#FFF0F2,#FFE4E8);padding:40px;display:flex;flex-direction:column;justify-content:center}
-.hero-text h1{font-size:44px;color:#8B6A3A;line-height:1.1;margin-bottom:12px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:40px 5%}
-.card{background:#fff;border:1px solid #E8C4A8;border-radius:18px;padding:28px;text-align:center}
-@media(max-width:768px){.hero{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.hero-text h1{font-size:32px}}
+.btn-gold{background:#8B6A3A;color:#fff;padding:12px 26px;border-radius:30px;text-decoration:none;font-weight:800;display:inline-block}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;min-height:100vh;padding-top:60px}
+.hero-text{background:linear-gradient(135deg,#FFF7F8,#FFE8EC);padding:8% 8%;display:flex;flex-direction:column;justify-content:center}
+.hero-text h1{font-size:52px;line-height:.95;color:#8B6A3A;font-weight:900;margin-bottom:14px}
+.hero-text p{font-size:17px;line-height:1.7;color:#6B4F5A;margin-bottom:24px}
+.hero-img{background:url('https://images.unsplash.com/photo-1560869713-7d0a29430803?w=900') center/cover;position:relative}
+.stats{position:absolute;bottom:20px;right:20px;left:20px;background:rgba(255,255,255,.9);border-radius:16px;padding:14px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;gap:8px}
+.stat b{color:#8B6A3A;display:block;font-size:18px}
+.stat span{font-size:11px;color:#7A5A58}
+.services{padding:60px 6%;background:#fff}
+.services h2{text-align:center;font-size:36px;color:#8B6A3A;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{border:1px solid #F0D5C0;border-radius:20px;padding:26px;background:linear-gradient(#fff,#FFF8F6);text-align:center}
+.card h3{margin-bottom:8px;color:#2D1A18}
+.card p{font-size:14px;color:#7A5A58;line-height:1.6}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-text h1{font-size:36px}.grid{grid-template-columns:1fr}.hero-img{min-height:400px}}
 </style>
 </head>
 <body>
-<nav><div class="logo">OPAL - صالون أوبال</div><a class="btn-wa" href="https://wa.me/96176869855?text=مرحبا%20أوبال%20بدي%20احجز%20موعد">واتساب</a></nav>
-<div class="hero"><div class="hero-img"></div><div class="hero-text"><h1>ارتقي بجمالك في الأشرفية</h1><p>شعر، أظافر ومكياج فاخر في أرقى صالون ببيروت - احجزي الآن عبر واتساب 76869855</p><br><a class="btn-wa" href="https://wa.me/96176869855?text=مرحبا%20صالون%20أوبال%20بدي%20احجز%20موعد%20">احجزي الآن عبر واتساب 💬</a></div></div>
-<div class="cards"><div class="card"><h3>💇‍♀️ شعر</h3><p>قص • تلوين • كيراتين</p></div><div class="card"><h3>💅 أظافر</h3><p>جل • مانيكير • تصاميم</p></div><div class="card"><h3>💄 مكياج</h3><p>عروس • سهرة • مناسبات</p></div></div>
+<nav>
+<div class="logo">OPAL - أوبال</div>
+<a class="btn-gold" href="https://wa.me/96176869855?text=مرحبا%20أوبال%20بدي%20احجز%20موعد">واتساب 76869855</a>
+</nav>
+<div class="hero">
+<div class="hero-text">
+<h1>ارتقي بجمالك في الأشرفية</h1>
+<p>شعر، أظافر ومكياج فاخر في أرقى صالون ببيروت. منتجات عالمية، فريق محترف، وخدمة 5 نجوم. احجزي الآن عبر واتساب</p>
+<a class="btn-gold" href="https://wa.me/96176869855?text=مرحبا%20صالون%20أوبال%20بدي%20احجز">احجزي الآن عبر واتساب 💬</a>
+</div>
+<div class="hero-img">
+<div class="stats">
+<div class="stat"><b>+1500</b><span>عميلة</span></div>
+<div class="stat"><b>4.9★</b><span>تقييم</span></div>
+<div class="stat"><b>76869855</b><span>واتساب</span></div>
+</div>
+</div>
+</div>
+<div class="services">
+<h2>خدماتنا الفاخرة</h2>
+<div class="grid">
+<div class="card"><h3>💇‍♀️ شعر</h3><p>قص، تلوين، بالياج، كيراتين</p></div>
+<div class="card"><h3>💅 أظافر</h3><p>جل، مانيكير، تصاميم ترند</p></div>
+<div class="card"><h3>💄 مكياج</h3><p>عروس، سهرة، مناسبات</p></div>
+</div>
+</div>
 </body>
 </html>
